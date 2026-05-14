@@ -1,0 +1,16 @@
+.Header {
+    color: white;
+
+    height: 4rem;
+    background-color: var(--color-deep-space-blue);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 1rem;
+    justify-content: space-between;
+}
+
+.LogoImg {
+    width: 10em;
+    filter: invert(1) brightness(2);
+}

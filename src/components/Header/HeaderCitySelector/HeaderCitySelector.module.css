@@ -1,0 +1,35 @@
+.HeaderCitySelector {
+    width: 10em;
+    height: 2em;
+}
+
+select {
+    background-color: var(--color-sky-blue-l);
+    color: var(--color-deep-space-blue);
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    text-align: center;
+    font-weight: bold;
+    
+    border-radius: 5px;
+}
+
+select:hover {
+    background-color: var(--color-blue-green);
+    color: var(--color-white-blue-l);
+    cursor: pointer;
+}
+
+select::picker-icon {
+    color: var(--color-deep-space-blue);
+    transition: .2s rotate;
+}
+
+select,::picker(select) {
+    appearance: base-select;
+}
+
+select:open::picker-icon {
+    rotate: 180deg;
+}
