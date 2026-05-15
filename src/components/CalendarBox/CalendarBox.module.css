@@ -1,0 +1,31 @@
+.CalendarBox {
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+    box-shadow: var(--card-box-shadow-right);
+    flex-grow: 9;
+
+    margin-top: 1rem;
+    margin-right: 1rem;
+
+    display: flex;
+    justify-content: center;
+}
+
+/* Nomes das classes:
+https://daypicker.dev/api/react/enumerations/UI
+ */
+.CalendarBox :global(.rdp-root) {
+    --rdp-today-color: var(--color-blue-green);
+    --rdp-accent-color: var(--color-deep-space-blue);
+    --rdp-accent-background-color: var(--color-amber-flame);
+    --rdp-nav-height: 10%;
+    font-family: var(--mono);
+
+
+    font-size: 0.75rem;
+}
+
+.CalendarBox :global(.rdp-month_caption) {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: .5em;
+}

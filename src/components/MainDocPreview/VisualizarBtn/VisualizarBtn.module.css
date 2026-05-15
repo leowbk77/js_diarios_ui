@@ -1,0 +1,20 @@
+.VisualizarBtn {
+    background-color: var(--color-deep-space-blue);
+    width: fit-content;
+}
+
+.BaseAnchor {
+    display: flex;
+    flex: row;
+    padding: 0 1em;
+}
+
+.Icon {
+    width: 2em;
+}
+
+.Text {
+    padding: 0 1em;
+    color: white;
+    text-decoration: none;
+}

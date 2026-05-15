@@ -1,0 +1,13 @@
+.SearchBox {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    margin: 0 1rem;
+    
+    border-radius: 10px 0 10px 10px;
+    box-shadow: var(--card-box-shadow-right);
+}
+
+.Temporary {
+    margin: 1rem;
+}

@@ -1,7 +1,8 @@
 /*
   Paleta base de cores
   https://coolors.co/palette/8ecae6-219ebc-023047-ffb703-fb8500
-*/
+  */
+
 :root {
   --color-white-blue-l: #F0F4F8;
   --color-sky-blue-l: #8ECAE6;
@@ -10,13 +11,15 @@
   --color-amber-flame: #FFB703;
   --color-tiger-orange: #FB8500;
 
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --card-box-shadow-bottom: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  --card-box-shadow-upper: rgba(0, 0, 0, 0.15) 1.950px -1.95px 2.6px;
+  --card-box-shadow-right: rgba(0, 0, 0, 0.15) 1.950px 0px 1px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
