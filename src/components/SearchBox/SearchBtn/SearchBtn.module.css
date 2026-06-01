@@ -1,17 +1,12 @@
-.VisualizarBtn {
+.SearchBtn {
     background-color: var(--color-deep-space-blue);
     width: fit-content;
-}
-
-.BaseAnchor {
+    
     display: flex;
     flex: row;
     padding: 0 1em;
-    text-decoration: none;
-}
 
-.Icon {
-    width: 2em;
+    cursor: pointer;
 }
 
 .Text {

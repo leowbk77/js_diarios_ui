@@ -1,72 +1,44 @@
-.SearchBox {
+.DocListingMain {
+    margin: 1rem 1rem;
     background-color: white;
-    display: flex;
-    flex-direction: column;
-    margin: 0 1rem;
+    border-radius: 10px;
     
-    border-radius: 0px 10px 10px 10px;
     box-shadow: var(--card-box-shadow-right);
+}
 
+.DocListingHeader {
     padding: 1rem;
-        
-    h3 {
-        font-family: var(--font-primary);
-        text-align: center;
-        margin: 0;
-    }
+    border-bottom: 2px solid var(--color-white-blue-l);
 
-}
-
-hr {
-    margin: 1rem;
-}
-
-input {
-    font-family: var(--font-primary);
-}
-
-label {
-    font-family: var(--font-primary);
-}
-
-.Inputs {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+
+
+    h3 {
+        font-family: var(--font-primary);
+        margin: 0;
+    }
 }
 
-.KeyWords {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    margin-right: 1rem;
+.DocListingCount {
+    background-color: var(--color-amber-flame);
+    border-radius: 25px;
+
+    p {
+        font-family: var(--font-primary);
+        margin: 0;
+        padding: .5em;
+    }
 }
 
-.Edicao {
-    display: flex;
-    flex-direction: column;
-    margin-right: 1rem;
+.DocListingCardBox {
+    min-height: 5rem;
 }
 
-.DtInicial {
-    display: flex;
-    flex-direction: column;
-    margin-right: 1rem;
 
-}
 
-.DtFinal {
-    display: flex;
-    flex-direction: column;
-}
 
-.SearchBtnDiv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-top: 1rem;
-}
 
 .StatusMsg {
     color: var(--color-text-secondary, #888);

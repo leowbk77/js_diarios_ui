@@ -1,13 +1,22 @@
 .Header {
     color: white;
 
-    height: 4rem;
+    height: fit-content;
     background-color: var(--color-deep-space-blue);
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0 1rem;
     justify-content: space-between;
+    
+    h3 {
+        margin: 0;
+        font-family: var(--font-primary);
+    }
+}
+
+.HeaderLeftContent {
+    padding: .5rem 0;
 }
 
 .LogoImg {

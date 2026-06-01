@@ -1,11 +1,11 @@
 .MainDocPreview {
     background-color: white;
-    border-radius: 10px;
-    width:  auto;
+    border-radius: 10px 10px 0 0;
+    width:  fit-content;
     height: fit-content;
-    box-shadow: var(--card-box-shadow-bottom);
+    box-shadow: var(--card-box-shadow-right);
     flex-grow: 1;
-    margin: 1rem;
+    margin: 1rem 1rem 0;
 }
 
 .ContentDiv {
@@ -14,16 +14,23 @@
     padding: 1em;
 }
 
-.IconFrame {
-    width: 10rem;
+.BtnDiv {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-img {
-    width: 60%;
+.IconFrame {
+    width: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    img {
+        width: 60%;
+    }
 }
+
 
 .Infos {
     display: flex;
@@ -32,4 +39,20 @@ img {
 
 .InfosTxt {
     margin-left: 1em;
+    font-family: var(--font-primary);
+}
+
+.HrDiv {
+    border-width: 2px;
+    border-style: dashed;
+    border-color: var(--color-white-blue-l);
+    margin: 0 1em;
+}
+
+hr {
+    margin: 0;
+}
+
+.Plabel {
+    font-family: var(--font-primary);
 }

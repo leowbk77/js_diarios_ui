@@ -13,6 +13,7 @@ select {
     font-weight: bold;
     
     border-radius: 5px;
+    font-family: var(--font-primary);
 }
 
 select:hover {
@@ -32,4 +33,8 @@ select,::picker(select) {
 
 select:open::picker-icon {
     rotate: 180deg;
+}
+
+option {
+    font-family: var(--font-primary);
 }

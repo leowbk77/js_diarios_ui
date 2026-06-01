@@ -1,7 +1,12 @@
 /*
-  Paleta base de cores
+  Paleta base de cores:
   https://coolors.co/palette/8ecae6-219ebc-023047-ffb703-fb8500
-  */
+
+  Fontes:
+  https://fonts.google.com/specimen/Gelasio
+  https://fonts.google.com/specimen/Google+Sans+Flex
+*/
+@import url('https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400..700;1,400..700&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
 
 :root {
   --color-white-blue-l: #F0F4F8;
@@ -15,30 +20,12 @@
   --card-box-shadow-upper: rgba(0, 0, 0, 0.15) 1.950px -1.95px 2.6px;
   --card-box-shadow-right: rgba(0, 0, 0, 0.15) 1.950px 0px 1px;
 
+  --font-primary: 'Google Sans Flex';
+  --font-secondary: 'Gelasio';
+
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
-}
-
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
 }
 
 body {
