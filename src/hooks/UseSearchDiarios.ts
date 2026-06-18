@@ -1,16 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import { searchDiarios } from '../api/DiarioApi';
 import { useSearchStore } from '../stores/SearchStore';
+import type { DiarioResult } from '../types/Diario';
 
 export function useSearchDiarios() {
-  const { terms, committedTerms, edicao, dtInicial, dtFinal, cidade, lastDocId } = useSearchStore();
+  const { committedTerms, edicao, dtInicial, dtFinal, cidade, lastDocId } = useSearchStore();
 
-  return useQuery({
+  return useQuery<DiarioResult[]>({
     queryKey: ['diarios', { committedTerms, edicao, dtInicial, dtFinal, cidade, lastDocId }],
     queryFn: () => searchDiarios({ terms: committedTerms, edicao, dtInicial, dtFinal, cidade, lastDocId }),
 
     // só executa se houver pelo menos um termo ou edição preenchidos
-    enabled: !!(terms.trim() || edicao.trim()) && !!cidade,
+    enabled: !!(committedTerms.trim() || edicao.trim()) && !!cidade,
 
     // mantém resultado anterior visível enquanto carrega a próxima página
     placeholderData: (prev) => prev,

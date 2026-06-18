@@ -63,7 +63,7 @@ const DocListingCard = ({ diario, searchTerm }: DocListingCardProps) => {
                         <h4>{dataFormatada}</h4>
                     </div>
                     <div className={styles.VisualizarBtn}>
-                        <VisualizarBtn />
+                        <VisualizarBtn url={diario.caminho}/>
                     </div>
                 </div>
 

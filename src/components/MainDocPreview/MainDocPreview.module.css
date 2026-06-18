@@ -56,3 +56,7 @@ hr {
 .Plabel {
     font-family: var(--font-primary);
 }
+
+.StatusMsg {
+    font-family: var(--font-primary);
+}
