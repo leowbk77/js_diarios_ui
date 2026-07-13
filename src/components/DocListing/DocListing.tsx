@@ -5,7 +5,7 @@ import DocListingCard from './DocListingCard/DocListingCard';
 
 const DocListing = () => {
     const { data, isLoading, isError, isFetching } = useSearchDiarios();
-    const { terms, currentPage, nextPage, prevPage } = useSearchStore();
+    const { committedTerms, currentPage, nextPage, prevPage } = useSearchStore();
 
     if (isLoading) return (
         <div className={styles.DocListing}>
@@ -48,7 +48,7 @@ const DocListing = () => {
                             <DocListingCard
                                 key={diario.id}
                                 diario={diario}
-                                searchTerm={terms}
+                                searchTerm={committedTerms}
                             />
                         ))}
                         
