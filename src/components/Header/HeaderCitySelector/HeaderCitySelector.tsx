@@ -12,7 +12,6 @@ const HeaderCitySelector = () => {
                 value={cidade}
                 onChange={(e) => setCidade(e.target.value)} >
                     <option value="udi">Uberlândia</option>
-                    <option value="monte">Monte Carmelo</option>
             </select>
         </div>
     );

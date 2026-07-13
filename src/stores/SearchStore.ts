@@ -34,7 +34,7 @@ export const useSearchStore = create<SearchStore>((set) => ({
   edicao: '',
   dtInicial: '',
   dtFinal: '',
-  cidade: '',
+  cidade: 'udi',
 
   cursors: [0],
   currentPage: 0,
