@@ -37,7 +37,7 @@ const SearchBox = () => {
 
                 <div className={styles.Edicao}>
                     <label htmlFor="edicao-input">Edição: </label>
-                    <input 
+                    <input
                         id="edicao-input"
                         className={styles.EdicaoInput} 
                         type="text" 

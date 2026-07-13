@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import { searchDiarios } from '../api/DiarioApi';
 import { useSearchStore } from '../stores/SearchStore';
-import type { DiarioResult } from '../types/Diario';
+import type { SearchResponse } from '../types/Diario';
 
 export function useSearchDiarios() {
   const { committedTerms, edicao, dtInicial, dtFinal, cidade, lastDocId } = useSearchStore();
 
-  return useQuery<DiarioResult[]>({
+  return useQuery<SearchResponse>({
     queryKey: ['diarios', { committedTerms, edicao, dtInicial, dtFinal, cidade, lastDocId }],
     queryFn: () => searchDiarios({ terms: committedTerms, edicao, dtInicial, dtFinal, cidade, lastDocId }),
 

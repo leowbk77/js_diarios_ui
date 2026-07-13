@@ -7,7 +7,6 @@ const DocListing = () => {
     const { data, isLoading, isError, isFetching } = useSearchDiarios();
     const { terms, currentPage, nextPage, prevPage } = useSearchStore();
 
-
     if (isLoading) return (
         <div className={styles.DocListing}>
             <p className={styles.StatusMsg}>Buscando documentos...</p>
@@ -19,16 +18,15 @@ const DocListing = () => {
             <p className={styles.StatusMsg}>Erro ao buscar documentos. Verifique sua conexão e tente novamente.</p>
         </div>
     );
-
     
-    if (!data || data.length === 0) return (
+    if (!data || data.searchDiariosResults.length === 0) return (
         <div className={styles.DocListing}>
             <p className={styles.StatusMsg}>Nenhum documento encontrado.</p>
         </div>
     );
 
     function handleNextPage() {
-        const lastId = data!.at(-1)?.id;
+        const lastId = data!.searchDiariosResults.at(-1)?.id;
         if (lastId) nextPage(lastId);
     }
 
@@ -37,7 +35,7 @@ const DocListing = () => {
             <div className={styles.DocListingHeader}>
                 <h3>Lista de documentos</h3>
                 <div className={styles.DocListingCount}>
-                    <p>{data.length} itens</p>
+                    <p>{data.searchDiariosResults.length} itens</p>
                 </div>
             </div>
             <div className={styles.DocListingCardBox}>
@@ -46,7 +44,7 @@ const DocListing = () => {
 
                     {/* opacidade reduzida durante refetch de paginação para não sumir com os resultados */}
                     <div className={isFetching ? styles.Fetching : ''}>
-                        {data.map((diario) => (
+                        {data.searchDiariosResults.map((diario) => (
                             <DocListingCard
                                 key={diario.id}
                                 diario={diario}
@@ -71,7 +69,7 @@ const DocListing = () => {
                         <button
                             className={styles.PageBtn}
                             onClick={handleNextPage}
-                            disabled={/*!data.hasMore || */isFetching} >
+                            disabled={!data.hasMore || isFetching} >
                             Próxima
                         </button>
                     </div>

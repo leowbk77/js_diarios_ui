@@ -1,6 +1,6 @@
-import type { DiarioResult } from "../types/Diario";
+import type { DiarioResult, SearchResponse } from "../types/Diario";
 
-const BASE_URL = import.meta.env.VITE_API_URL ?? 'https://localhost:44346';
+const BASE_URL = import.meta.env.DEV ? 'https://localhost:44346' : '';
 
 export interface SearchParams {
   terms?: string;
@@ -12,7 +12,7 @@ export interface SearchParams {
   cidade: string;
 }
 
-export async function searchDiarios(params: SearchParams): Promise<DiarioResult[]> {
+export async function searchDiarios(params: SearchParams): Promise<SearchResponse> {
   const query = new URLSearchParams();
 
   if (params.terms)     query.set('terms', params.terms);
@@ -24,7 +24,7 @@ export async function searchDiarios(params: SearchParams): Promise<DiarioResult[
   query.set('limit', String(params.limit ?? 10));
   query.set('cidade', params.cidade);
 
-  const res = await fetch(`${BASE_URL}/api/diarios/udi/search?${query.toString()}`);
+  const res = await fetch(`${BASE_URL}/api/diarios/search?${query.toString()}`);
 
   if (!res.ok) throw new Error(`Erro na busca: ${res.status}`);
 
@@ -32,7 +32,7 @@ export async function searchDiarios(params: SearchParams): Promise<DiarioResult[
 }
 
 export async function getLatestDiario(cidade: string): Promise<DiarioResult> {
-    const res = await fetch(`${BASE_URL}/diarios/udi/latest?cidade=${cidade}`);
+    const res = await fetch(`${BASE_URL}/api/diarios/get-latest?from=${cidade}`);
 
     if (!res.ok) throw new Error(`Erro ao buscar diário mais recente: ${res.status}`);
 

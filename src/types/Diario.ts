@@ -14,6 +14,6 @@ export interface DiarioResult {
 }
 
 export interface SearchResponse {
-  results: DiarioResult[];
+  searchDiariosResults: DiarioResult[];
   hasMore: boolean;
 }
