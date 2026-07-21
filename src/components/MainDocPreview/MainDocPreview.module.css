@@ -2,6 +2,7 @@
     background-color: white;
     border-radius: 10px 10px 0 0;
     width:  fit-content;
+    max-width: 680px;
     height: fit-content;
     box-shadow: var(--card-box-shadow-right);
     flex-grow: 1;

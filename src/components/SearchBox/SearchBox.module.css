@@ -14,7 +14,6 @@
         text-align: center;
         margin: 0;
     }
-
 }
 
 hr {
@@ -52,7 +51,6 @@ label {
     display: flex;
     flex-direction: column;
     margin-right: 1rem;
-
 }
 
 .DtFinal {
@@ -107,4 +105,35 @@ label {
 .PageIndicator {
     font-size: 13px;
     color: var(--color-text-secondary, #888);
+}
+
+@media(max-width: 768px){
+    .SearchBox {
+        border-radius: 0px 0px 10px 10px;
+    }
+    
+    .Inputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .KeyWords {
+        margin-top: 1rem;
+        margin-right: 1rem;
+    }
+
+    .Edicao {
+        margin-top: 1rem;
+        margin-right: 1rem;
+    }
+
+    .DtInicial {
+        margin-top: 1rem;
+        margin-right: 1rem;
+    }
+    .DtFinal {
+        margin-top: 1rem;
+        margin-right: 1rem;
+    }
 }
