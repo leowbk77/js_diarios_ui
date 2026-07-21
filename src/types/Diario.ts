@@ -10,6 +10,7 @@ export interface DiarioResult {
   ano: number;
   mes: number;
   dia: number;
+  data: Date;
   paginas: Pagina[];
 }
 

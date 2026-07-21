@@ -11,9 +11,8 @@ const SearchBox = () => {
         commitSearch,
     } = useSearchStore();
 
-
     function handleSearch() {
-        commitSearch(); // garante que volta para a primeira página ao buscar de novo
+        commitSearch();
     }
 
     return (

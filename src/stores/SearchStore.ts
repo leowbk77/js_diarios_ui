@@ -4,8 +4,11 @@ interface SearchFilters {
   terms: string;
   committedTerms: string;
   edicao: string;
+  committedEdicao: string;
   dtInicial: string;
+  committedDtInicial: string;
   dtFinal: string;
+  committedDtFinal: string;
   cidade: string;
 }
 
@@ -32,8 +35,11 @@ export const useSearchStore = create<SearchStore>((set) => ({
   terms: '',
   committedTerms: '',
   edicao: '',
+  committedEdicao: '',
   dtInicial: '',
+  committedDtInicial: '',
   dtFinal: '',
+  committedDtFinal: '',
   cidade: 'udi',
 
   cursors: [0],
@@ -48,8 +54,10 @@ export const useSearchStore = create<SearchStore>((set) => ({
   setCidade:    (cidade)    => set({ cidade }),
 
   commitSearch: () => set((state) => ({
-    committedTerms: state.terms,
-    cursors: [0],
+    committedTerms:     state.terms,
+    committedEdicao:    state.edicao,
+    committedDtInicial: state.dtInicial,
+    committedDtFinal:   state.dtFinal,
     currentPage: 0,
     lastDocId: 0,
   })),

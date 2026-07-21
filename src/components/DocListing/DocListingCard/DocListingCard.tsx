@@ -89,7 +89,7 @@ const DocListingCard = ({ diario, searchTerm }: DocListingCardProps) => {
                         ))}
                         {/* indica que há mais páginas além das 3 exibidas */}
                         {diario.paginas.length > MAX_PAGINAS && (
-                            <span className={styles.MorePages}>
+                            <span className={styles.MorePages} title={`+${diario.paginas.length - MAX_PAGINAS} pagina(s) com resultados`}>
                             +{diario.paginas.length - MAX_PAGINAS}
                             </span>
                         )}
