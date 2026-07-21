@@ -11,8 +11,9 @@ const MainDocPreview = () => {
     const { data: diario, isLoading, isError } = useLatestDiario();
 
     const dataFormatada = diario
-        ? new Date(diario.ano, diario.mes - 1, diario.dia).toLocaleDateString('pt-BR')
-        : null;
+        ? new Date(diario.data).toLocaleDateString('pt-BR', {
+        timeZone: 'UTC'
+    }) : null;
 
     const nomeEdicao = diario?.nmEdicao.replace(/\.pdf$/i, '');
 

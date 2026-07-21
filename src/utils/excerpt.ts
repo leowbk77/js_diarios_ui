@@ -12,9 +12,10 @@ export function extractWindow(
   windowSize = WINDOW_SIZE
 ): ExcerptResult {
   const MAX_TOTAL = windowSize * 2 + term.length + 20;
+  const MAX_TOTAL_SEM_TERMO = 540;
 
   if (!term || text.length <= MAX_TOTAL)
-    return { excerpt: text, clippedStart: false, clippedEnd: false };
+    return { excerpt: text.slice(0, MAX_TOTAL_SEM_TERMO), clippedStart: false, clippedEnd: true };
 
   const idx = text.toLowerCase().indexOf(term.toLowerCase());
 

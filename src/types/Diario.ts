@@ -7,10 +7,7 @@ export interface DiarioResult {
   id: number;
   nmEdicao: string;
   caminho: string;
-  ano: number;
-  mes: number;
-  dia: number;
-  data: Date;
+  data: string;
   paginas: Pagina[];
 }
 

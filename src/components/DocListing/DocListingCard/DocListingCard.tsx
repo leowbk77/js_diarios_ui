@@ -45,8 +45,13 @@ const DocListingCard = ({ diario, searchTerm }: DocListingCardProps) => {
     
     const paginaAtual = paginasVisiveis[paginaSelecionada];
 
+    /* ================ MODELO ANTIGO =======================
     const dataFormatada = new Date(diario.ano, diario.mes - 1, diario.dia)
     .toLocaleDateString('pt-BR');
+    */
+    const dataNova = new Date(diario.data).toLocaleDateString('pt-BR', {
+        timeZone: 'UTC'
+    });
 
     const nomeEdicao = diario.nmEdicao.replace(/\.pdf$/i, '');
 
@@ -60,7 +65,7 @@ const DocListingCard = ({ diario, searchTerm }: DocListingCardProps) => {
                 <div className={styles.InnerContentHeader}>
                     <div className={styles.DocInfos}>
                         <h4>Edição {nomeEdicao}</h4>
-                        <h4>{dataFormatada}</h4>
+                        <h4>{dataNova/*dataFormatada*/}</h4>
                     </div>
                     <div className={styles.VisualizarBtn}>
                         <VisualizarBtn url={diario.caminho}/>
@@ -89,7 +94,9 @@ const DocListingCard = ({ diario, searchTerm }: DocListingCardProps) => {
                         ))}
                         {/* indica que há mais páginas além das 3 exibidas */}
                         {diario.paginas.length > MAX_PAGINAS && (
-                            <span className={styles.MorePages} title={`+${diario.paginas.length - MAX_PAGINAS} pagina(s) com resultados`}>
+                            <span 
+                            className={styles.MorePages} 
+                            title={`+${diario.paginas.length - MAX_PAGINAS} pagina(s) com resultados`}>
                             +{diario.paginas.length - MAX_PAGINAS}
                             </span>
                         )}
