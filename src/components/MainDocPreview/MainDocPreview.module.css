@@ -9,10 +9,20 @@
     margin: 1rem 1rem 0;
 }
 
+.TitleDiv {
+    padding: 0.5em;
+    h3 {
+        margin: 0;
+        text-align: center;
+        font-family: var(--font-primary);
+    }
+}
+
 .ContentDiv {
     display: flex;
     flex-direction: row;
     padding: 1em;
+    padding-top:0.5em;
 }
 
 .BtnDiv {
@@ -60,4 +70,18 @@ hr {
 
 .StatusMsg {
     font-family: var(--font-primary);
+}
+
+@media(max-width: 768px){
+    
+    .IconFrame {
+        width: 8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        img {
+            width: 60%;
+        }
+    }
 }

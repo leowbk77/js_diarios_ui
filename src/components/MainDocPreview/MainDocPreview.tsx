@@ -19,6 +19,9 @@ const MainDocPreview = () => {
 
     return (
         <div className={styles.MainDocPreview}>
+            <div className={styles.TitleDiv}>
+                <h3>Último diário indexado</h3>
+            </div>
             <div className={styles.ContentDiv}>
                 <div className={styles.IconFrame}>
                     <img src={docSvg} alt="" />
@@ -43,12 +46,10 @@ const MainDocPreview = () => {
                                 <div className={styles.InfosLabels}>
                                     <p className={styles.Plabel}><b>Edição:</b></p>
                                     <p className={styles.Plabel}><b>Data:</b></p>
-                                    <p className={styles.Plabel}><b>Acesso:</b></p>
                                 </div>
                                 <div className={styles.InfosTxt}>
                                     <p className={styles.InfosTxtEdicao}>{nomeEdicao}</p>
                                     <p className={styles.InfosTxtData}>{dataFormatada}</p>
-                                    <p className={styles.InfosTxtCaminho}>{diario.caminho}</p>
                                 </div>
                             </div>
                             <div className={styles.BtnDiv}>
