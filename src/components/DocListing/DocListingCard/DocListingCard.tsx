@@ -18,9 +18,9 @@ function PreviewText({ text, term }: { text: string; term?: string }) {
 
   if (!term?.trim()) return <span>{excerpt}{clippedEnd && <Ellipsis />}</span>;
 
-  const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const parts = excerpt.split(new RegExp(`(${escaped})`, 'gi'));
-
+  const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
+  const parts = excerpt.replaceAll('\n', '').split(new RegExp(`(${escaped})`, 'gi'));
+  
   return (
     <>
       {clippedStart && <Ellipsis />}
