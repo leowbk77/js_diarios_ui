@@ -15,3 +15,9 @@ export interface SearchResponse {
   searchDiariosResults: DiarioResult[];
   hasMore: boolean;
 }
+
+export interface IndexStatus {
+  diariosIndexados: number;
+  dataMaisRecenteIndexada: string;
+  dataMaisAntigaIndexada: string;
+}

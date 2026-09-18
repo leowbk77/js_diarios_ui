@@ -4,6 +4,21 @@ import docSvg from './../../assets/img/doc.svg';
 
 import { useLatestDiario } from '../../hooks/useLatestDiario';
 import { useSearchStore } from '../../stores/SearchStore';
+import { useIndexStatus } from '../../hooks/useIndexStatus';
+
+const IndexStatusDisplay = () => {
+  const { data, isLoading, isError } = useIndexStatus();
+
+  if (isLoading) return <p>Carregando status...</p>;
+  if (isError || !data) return null;
+
+  return (
+    <div className={styles.StatusIndexContentDiv}>
+      <p><strong>Total indexado:</strong> {data.diariosIndexados} diários</p>
+      <p><strong>Período:</strong> {new Date(data.dataMaisAntigaIndexada).toLocaleDateString('pt-BR', { timeZone: 'UTC' })} - {new Date(data.dataMaisRecenteIndexada).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</p>
+    </div>
+  );
+};
 
 const MainDocPreview = () => {
 
@@ -19,45 +34,55 @@ const MainDocPreview = () => {
 
     return (
         <div className={styles.MainDocPreview}>
-            <div className={styles.TitleDiv}>
-                <h3>Último diário indexado</h3>
-            </div>
-            <div className={styles.ContentDiv}>
-                <div className={styles.IconFrame}>
-                    <img src={docSvg} alt="" />
+            <div className={styles.LastDiarioIndexado}>
+                <div className={styles.TitleDiv}>
+                    <h3>Último diário indexado</h3>
                 </div>
-                <div className={styles.InfoFrame}>
+                <div className={styles.ContentDiv}>
+                    <div className={styles.IconFrame}>
+                        <img src={docSvg} alt="" />
+                    </div>
+                    <div className={styles.InfoFrame}>
 
-                    {!cidade && (
-                        <p className={styles.StatusMsg}>Selecione uma cidade.</p>
-                    )}
+                        {!cidade && (
+                            <p className={styles.StatusMsg}>Selecione uma cidade.</p>
+                        )}
 
-                    {cidade && isLoading && (
-                        <p className={styles.StatusMsg}>Carregando...</p>
-                    )}
+                        {cidade && isLoading && (
+                            <p className={styles.StatusMsg}>Carregando...</p>
+                        )}
 
-                    {cidade && isError && (
-                        <p className={styles.StatusMsg}>Erro ao carregar o diário mais recente.</p>
-                    )}
+                        {cidade && isError && (
+                            <p className={styles.StatusMsg}>Erro ao carregar o diário mais recente.</p>
+                        )}
 
-                    {diario && (
-                        <>
-                            <div className={styles.Infos}>
-                                <div className={styles.InfosLabels}>
-                                    <p className={styles.Plabel}><b>Edição:</b></p>
-                                    <p className={styles.Plabel}><b>Data:</b></p>
+                        {diario && (
+                            <>
+                                <div className={styles.Infos}>
+                                    <div className={styles.InfosLabels}>
+                                        <p className={styles.Plabel}><b>Edição:</b></p>
+                                        <p className={styles.Plabel}><b>Data:</b></p>
+                                    </div>
+                                    <div className={styles.InfosTxt}>
+                                        <p className={styles.InfosTxtEdicao}>{nomeEdicao}</p>
+                                        <p className={styles.InfosTxtData}>{dataFormatada}</p>
+                                    </div>
                                 </div>
-                                <div className={styles.InfosTxt}>
-                                    <p className={styles.InfosTxtEdicao}>{nomeEdicao}</p>
-                                    <p className={styles.InfosTxtData}>{dataFormatada}</p>
+                                <div className={styles.BtnDiv}>
+                                    <VisualizarBtn url={diario.caminho} />
                                 </div>
-                            </div>
-                            <div className={styles.BtnDiv}>
-                                <VisualizarBtn url={diario.caminho} />
-                            </div>
-                        </>
-                    )}
-                    
+                            </>
+                        )}
+                        
+                    </div>
+                </div>
+            </div>
+            <div className={styles.IndexStatusDiv}>
+                <div className={styles.TitleDiv}>
+                    <h3>Status da Indexação</h3>
+                </div>
+                <div className={styles.IndexStatusContent}>
+                    {IndexStatusDisplay()}
                 </div>
             </div>
             <div className={styles.HrDiv}>

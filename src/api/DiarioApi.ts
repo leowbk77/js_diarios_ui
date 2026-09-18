@@ -1,4 +1,4 @@
-import type { DiarioResult, SearchResponse } from "../types/Diario";
+import type { DiarioResult, SearchResponse, IndexStatus } from "../types/Diario";
 
 const BASE_URL = import.meta.env.DEV ? 'https://localhost:44346' : '';
 
@@ -10,6 +10,14 @@ export interface SearchParams {
   lastDocId?: number;
   limit?: number;
   cidade: string;
+}
+
+export async function getIndexStatus(cidade: string): Promise<IndexStatus> {
+  const res = await fetch(`${BASE_URL}/api/diarios/get-index-status?from=${cidade}`);
+
+  if (!res.ok) throw new Error(`Erro ao buscar status do índice: ${res.status}`);
+
+  return res.json();
 }
 
 export async function searchDiarios(params: SearchParams): Promise<SearchResponse> {

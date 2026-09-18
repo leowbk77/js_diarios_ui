@@ -72,6 +72,11 @@ hr {
     font-family: var(--font-primary);
 }
 
+.StatusIndexContentDiv{
+    font-family: var(--font-primary);
+    text-align: center;
+}
+
 @media(max-width: 768px){
     
     .IconFrame {
