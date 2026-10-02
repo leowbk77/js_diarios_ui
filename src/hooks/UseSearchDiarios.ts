@@ -10,7 +10,9 @@ export function useSearchDiarios() {
     committedDtInicial,
     committedDtFinal,
     cidade,
-    lastDocId,} = useSearchStore();
+    lastDocId,
+    lastDocDtEdicao,
+  } = useSearchStore();
 
   return useQuery<SearchResponse>({
     queryKey: ['diarios', {
@@ -19,7 +21,8 @@ export function useSearchDiarios() {
       committedDtInicial,
       committedDtFinal,
       cidade,
-      lastDocId
+      lastDocId,
+      lastDocDtEdicao
     }],
     queryFn: () => searchDiarios({
       terms:     committedTerms,
@@ -27,7 +30,8 @@ export function useSearchDiarios() {
       dtInicial: committedDtInicial,
       dtFinal:   committedDtFinal,
       cidade,
-      lastDocId
+      lastDocId,
+      lastDocDtEdicao
     }),
 
     // só executa se houver pelo menos um termo ou edição preenchidos

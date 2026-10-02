@@ -13,9 +13,10 @@ interface SearchFilters {
 }
 
 interface SearchStore extends SearchFilters {
-  cursors: number[];
+  cursors: {docId: number; dtEdicao: string}[];
   currentPage: number;
   lastDocId: number;
+  lastDocDtEdicao: string;
 
   setTerms:     (v: string) => void;
   setEdicao:    (v: string) => void;
@@ -26,7 +27,7 @@ interface SearchStore extends SearchFilters {
   // confirma a busca — copia terms → committedTerms e reseta paginação
   commitSearch: () => void;
 
-  nextPage: (lastDocId: number) => void;
+  nextPage: (lastDocId: number, lastDocDtEdicao: string) => void;
   prevPage: () => void;
   resetCursors: () => void;
 }
@@ -42,9 +43,10 @@ export const useSearchStore = create<SearchStore>((set) => ({
   committedDtFinal: '',
   cidade: 'udi',
 
-  cursors: [0],
+  cursors: [{ docId: 0, dtEdicao: ''}],
   currentPage: 0,
   lastDocId: 0,
+  lastDocDtEdicao: '',
 
   // setters de filtro — não disparam query, só atualizam o valor digitado
   setTerms:     (terms)     => set({ terms }),
@@ -60,21 +62,25 @@ export const useSearchStore = create<SearchStore>((set) => ({
     committedDtFinal:   state.dtFinal,
     currentPage: 0,
     lastDocId: 0,
+    lastDocDtEdicao: '',
   })),
 
-  nextPage: (lastDocId) => set((state) => ({
-    cursors: [...state.cursors, lastDocId],
+  nextPage: (lastDocId, lastDocDtEdicao) => set((state) => ({
+    cursors: [...state.cursors, {docId: lastDocId, dtEdicao: lastDocDtEdicao}],
     currentPage: state.currentPage + 1,
     lastDocId,
+    lastDocDtEdicao,
   })),
 
   prevPage: () => set((state) => {
     const prevPage = Math.max(0, state.currentPage - 1);
+    const cursor = state.cursors[prevPage]
     return {
       currentPage: prevPage,
-      lastDocId: state.cursors[prevPage],
+      lastDocId: cursor.docId,
+      lastDocDtEdicao: cursor.dtEdicao,
     };
   }),
 
-  resetCursors: () => set({ cursors: [0], currentPage: 0, lastDocId: 0 }),
+  resetCursors: () => set({ cursors: [{docId: 0, dtEdicao: ''}], currentPage: 0, lastDocId: 0, lastDocDtEdicao: '' }),
 }));
