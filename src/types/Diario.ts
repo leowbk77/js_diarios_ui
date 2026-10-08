@@ -11,8 +11,14 @@ export interface DiarioResult {
   paginas: Pagina[];
 }
 
+export interface Paginacao {
+  lastDiarioId: number;
+  lastDiarioData: string;
+}
+
 export interface SearchResponse {
   searchDiariosResults: DiarioResult[];
+  paginacao: Paginacao;
   hasMore: boolean;
 }
 

@@ -26,8 +26,7 @@ const DocListing = () => {
     );
 
     function handleNextPage() {
-        const lastItem = data!.searchDiariosResults.at(-1);
-        if (lastItem) nextPage(lastItem.id, lastItem.data);
+        if (data?.paginacao) nextPage(data.paginacao);
     }
 
     return (

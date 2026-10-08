@@ -16,7 +16,7 @@ interface SearchStore extends SearchFilters {
   cursors: {docId: number; dtEdicao: string}[];
   currentPage: number;
   lastDocId: number;
-  lastDocDtEdicao: string;
+  lastDocDt: string;
 
   setTerms:     (v: string) => void;
   setEdicao:    (v: string) => void;
@@ -27,7 +27,7 @@ interface SearchStore extends SearchFilters {
   // confirma a busca — copia terms → committedTerms e reseta paginação
   commitSearch: () => void;
 
-  nextPage: (lastDocId: number, lastDocDtEdicao: string) => void;
+  nextPage: (paginacao: { lastDiarioId: number; lastDiarioData: string }) => void;
   prevPage: () => void;
   resetCursors: () => void;
 }
@@ -46,7 +46,7 @@ export const useSearchStore = create<SearchStore>((set) => ({
   cursors: [{ docId: 0, dtEdicao: ''}],
   currentPage: 0,
   lastDocId: 0,
-  lastDocDtEdicao: '',
+  lastDocDt: '',
 
   // setters de filtro — não disparam query, só atualizam o valor digitado
   setTerms:     (terms)     => set({ terms }),
@@ -62,14 +62,14 @@ export const useSearchStore = create<SearchStore>((set) => ({
     committedDtFinal:   state.dtFinal,
     currentPage: 0,
     lastDocId: 0,
-    lastDocDtEdicao: '',
+    lastDocDt: '',
   })),
 
-  nextPage: (lastDocId, lastDocDtEdicao) => set((state) => ({
-    cursors: [...state.cursors, {docId: lastDocId, dtEdicao: lastDocDtEdicao}],
+  nextPage: (paginacao) => set((state) => ({
+    cursors: [...state.cursors, {docId: paginacao.lastDiarioId, dtEdicao: paginacao.lastDiarioData}],
     currentPage: state.currentPage + 1,
-    lastDocId,
-    lastDocDtEdicao,
+    lastDocId: paginacao.lastDiarioId,
+    lastDocDt: paginacao.lastDiarioData,
   })),
 
   prevPage: () => set((state) => {
@@ -78,9 +78,9 @@ export const useSearchStore = create<SearchStore>((set) => ({
     return {
       currentPage: prevPage,
       lastDocId: cursor.docId,
-      lastDocDtEdicao: cursor.dtEdicao,
+      lastDocDt: cursor.dtEdicao,
     };
   }),
 
-  resetCursors: () => set({ cursors: [{docId: 0, dtEdicao: ''}], currentPage: 0, lastDocId: 0, lastDocDtEdicao: '' }),
+  resetCursors: () => set({ cursors: [{docId: 0, dtEdicao: ''}], currentPage: 0, lastDocId: 0, lastDocDt: '' }),
 }));

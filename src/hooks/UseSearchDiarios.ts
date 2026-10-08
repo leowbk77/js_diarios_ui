@@ -31,7 +31,7 @@ export function useSearchDiarios() {
       dtFinal:   committedDtFinal,
       cidade,
       lastDocId,
-      lastDocDtEdicao
+      lastDocDt: lastDocDtEdicao
     }),
 
     // só executa se houver pelo menos um termo ou edição preenchidos

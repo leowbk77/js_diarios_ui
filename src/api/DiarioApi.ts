@@ -8,7 +8,7 @@ export interface SearchParams {
   dtInicial?: string;
   dtFinal?: string;
   lastDocId?: number;
-  lastDocDtEdicao?: string;
+  lastDocDt?: string;
   limit?: number;
   cidade: string;
 }
@@ -29,7 +29,7 @@ export async function searchDiarios(params: SearchParams): Promise<SearchRespons
   if (params.dtInicial) query.set('dtInicial', params.dtInicial);
   if (params.dtFinal)   query.set('dtFinal', params.dtFinal);
   if (params.lastDocId) query.set('lastDocId', String(params.lastDocId));
-  if (params.lastDocDtEdicao) query.set('lastDocDtEdicao', params.lastDocDtEdicao);
+  if (params.lastDocDt) query.set('lastDocDt', params.lastDocDt);
 
   query.set('limit', String(params.limit ?? 10));
   query.set('cidade', params.cidade);
