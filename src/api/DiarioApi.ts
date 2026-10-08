@@ -30,7 +30,7 @@ export async function searchDiarios(params: SearchParams): Promise<SearchRespons
   if (params.dtFinal)   query.set('dtFinal', params.dtFinal);
   if (params.lastDocId) query.set('lastDocId', String(params.lastDocId));
   if (params.lastDocDt) query.set('lastDocDt', params.lastDocDt);
-
+  
   query.set('limit', String(params.limit ?? 10));
   query.set('cidade', params.cidade);
 

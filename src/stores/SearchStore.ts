@@ -60,13 +60,14 @@ export const useSearchStore = create<SearchStore>((set) => ({
     committedEdicao:    state.edicao,
     committedDtInicial: state.dtInicial,
     committedDtFinal:   state.dtFinal,
+    cursors: [{docId: 0, dtEdicao: ''}],
     currentPage: 0,
     lastDocId: 0,
     lastDocDt: '',
   })),
 
   nextPage: (paginacao) => set((state) => ({
-    cursors: [...state.cursors, {docId: paginacao.lastDiarioId, dtEdicao: paginacao.lastDiarioData}],
+    cursors: [...state.cursors, { docId: paginacao.lastDiarioId, dtEdicao: paginacao.lastDiarioData}],
     currentPage: state.currentPage + 1,
     lastDocId: paginacao.lastDiarioId,
     lastDocDt: paginacao.lastDiarioData,

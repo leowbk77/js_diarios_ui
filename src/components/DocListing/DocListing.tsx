@@ -29,6 +29,12 @@ const DocListing = () => {
         if (data?.paginacao) nextPage(data.paginacao);
     }
 
+    // faz o sort no front já que o json está vindo desordenado
+    // como a exibição é só de 10 resultados por vez fica OK de fazer do lado do front
+    const sortedResults = [...data.searchDiariosResults].sort((a,b) => {
+        return new Date(b.data).getTime() - new Date(a.data).getTime();
+    });
+
     return (
         <div className={styles.DocListingMain}>
             <div className={styles.DocListingHeader}>
@@ -43,7 +49,7 @@ const DocListing = () => {
 
                     {/* opacidade reduzida durante refetch de paginação para não sumir com os resultados */}
                     <div className={isFetching ? styles.Fetching : ''}>
-                        {data.searchDiariosResults.map((diario) => (
+                        {/*data.searchDiariosResults.map((diario)*/sortedResults.map((diario) => (
                             <DocListingCard
                                 key={diario.id}
                                 diario={diario}
